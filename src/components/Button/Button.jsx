@@ -1,6 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Button component for Verox UI library
+ * @param {string} size - Size of the button (xs, sm, base, lg, 2xl)
+ * @param {string} color - Color of the button (blue, red, green, yellow, default, purple)
+ * @param {string} rounded - Rounded corners of the button (none, sm, md, lg, full)
+ * @param {string} variant - Variant of the button (solid, outlined, ghost, flat, light)
+ * @param {string} borderType - Border type of the button (solid, dashed, dotted)
+ * @param {boolean} disabled - Disables the button
+ * @param {string} text - Text displayed on the button
+ * @param {function} onClick - Function to run when button is clicked
+ * @param {string} type - Type of the button (button, submit, reset)
+ * @param {function} onMouseEnter - Function to run when mouse enters the button
+ * @param {function} onMouseLeave - Function to run when mouse leaves the button
+ * @param {function} onFocus - Function to run when button is focused
+ * @param {function} onBlur - Function to run when button loses focus
+ * @returns {JSX.Element} Button component
+ */
+
 const Button = ({
   size = 'xs',
   color = 'blue',
@@ -10,6 +28,11 @@ const Button = ({
   disabled = false,
   text = 'Button',
   onClick,
+  type = 'button',
+  onMouseEnter,
+  onMouseLeave,
+  onFocus,
+  onBlur
 
 }) => {
 
@@ -71,7 +94,14 @@ const Button = ({
 
 
   return (
-    <button onClick={onClick} className={`font-medium px-4 py-2 w-fit h-fit ${roundedClass} ${sizeClass} ${variantClass} ${disabledClass}`}>
+    <button
+    onClick={onClick}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
+    onFocus={onFocus}
+    onBlur={onBlur}
+    type={type}
+    className={`font-medium px-4 py-2 w-fit h-fit ${roundedClass} ${sizeClass} ${variantClass} ${disabledClass}`}>
       {text}
     </button>
   );
@@ -85,6 +115,14 @@ Button.propTypes = {
   borderType: PropTypes.oneOf(['solid', 'dashed', 'dotted']),
   disabled: PropTypes.bool,
   text: PropTypes.string,
+  onClick: PropTypes.func,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  disabled : PropTypes.bool,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+
 };
 
 // Set up defaultProps
@@ -96,7 +134,15 @@ Button.defaultProps = {
   borderType: 'solid',
   disabled: false,
   text: 'Button',
-  onClick: () => {alert('Button clicked!')},
+  onClick: () => {},
+  type: 'button',
+  disabled : false,
+  onMouseEnter: () => {},
+  onMouseLeave: () => {},
+  onFocus: () => {},
+  onBlur: () => {},
+
 };
+
 
 export default Button;
