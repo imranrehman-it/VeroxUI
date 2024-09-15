@@ -1,7 +1,17 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const AccordionItem = ({ title, children, description, border = true }) => {
+/**
+ *
+ * @param {object} props
+ * @param {string} props.title Title of the accordion item
+ * @param {string} props.subtitle Optional subtitle of the accordion item
+ * @param {string} props.children Optional children of the accordion item, defaults to null if not provided
+ * @param {string} props.description Optional description of the accordion item, defaults to null if not provided
+ * @param {boolean} props.border Optional border of the accordion item, defaults to true if not provided except for the last item
+ */
+
+const AccordionItem = ({ title, subtitle, children, description, border = true }) => {
     const [isOpen, setIsOpen] = useState(false);
     const contentRef = useRef(null);
 
@@ -17,9 +27,17 @@ const AccordionItem = ({ title, children, description, border = true }) => {
            style={{ borderColor: 'hsla(240,4%, 15%, 1)' }}
           >
         <div className='flex justify-between items-center'>
-          <span className='text-lg text-white'>
-            {title}
-          </span>
+        <div className='flex flex-col'>
+            <span className='text-lg text-white'>
+              {title}
+            </span>
+            {subtitle &&
+            <span className='text-sm text-gray-400'>
+              {subtitle}
+            </span>
+            }
+
+          </div>
           {/* Animated dropdown arrow */}
           <span className={`transform transition-transform duration-300 ease-in-out ${isOpen ? 'rotate-90' : 'rotate-0'}`}>
             <svg
@@ -51,6 +69,7 @@ const AccordionItem = ({ title, children, description, border = true }) => {
 
 AccordionItem.propTypes = {
   title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   children: PropTypes.node,
   description: PropTypes.string,
   border: PropTypes.bool
@@ -58,6 +77,7 @@ AccordionItem.propTypes = {
 
 AccordionItem.defaultProps = {
   title: 'Title',
+  subtitle: null,
   children: null,
   description: null,
   border: true
