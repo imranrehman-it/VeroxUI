@@ -10,4 +10,9 @@ export const ExampleComponent = ({ text }) => {
 export { default as Button } from './components/Button/Button'
 export { default as Accordion } from './components/Accordion/Accordion'
 export { default as AccordionItem } from './components/Accordion/AccordionItem'
+export { default as CardHeading } from './components/Cards/CardHeading'
+export { default as CardContent } from './components/Cards/CardContent'
+export { default as CardFooter } from './components/Cards/CardFooter'
+export { default as CardConatiner } from './components/Cards/CardConatiner'
+export { default as DividedCardContainer } from './components/Cards/DividedCardContainer'
 
