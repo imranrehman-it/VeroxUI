@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 
 /**
@@ -32,7 +32,8 @@ const Button = ({
   onMouseEnter,
   onMouseLeave,
   onFocus,
-  onBlur
+  onBlur,
+  children,
 
 }) => {
 
@@ -102,7 +103,7 @@ const Button = ({
     onBlur={onBlur}
     type={type}
     className={`font-medium px-4 py-2 w-fit h-fit ${roundedClass} ${sizeClass} ${variantClass} ${disabledClass}`}>
-      {text}
+      {children || text}
     </button>
   );
 }
