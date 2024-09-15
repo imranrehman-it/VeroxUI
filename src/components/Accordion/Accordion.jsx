@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AccordionItem from './AccordionItem';
 
-// Function to validate CSS width/height values
+/**write jsDoc
+ * @param {object} props
+ * @param {string} props.children
+ * @param {string} props.width Can be any valid CSS unit (e.g., '100px', '50%', 'auto')
+ * @param {string} props.height Can be any valid CSS unit (e.g., '100px', '50%', 'auto')
+ * @returns {JSX.Element} Accordion component
+ */
+
 const validCSSValue = (props, propName, componentName) => {
   const value = props[propName];
   const validUnits = [
@@ -22,9 +29,7 @@ const validCSSValue = (props, propName, componentName) => {
   }
 };
 
-// Accordion component
 const Accordion = ({ children, width, height }) => {
-  // Check if all children are of type AccordionItem
   const childrenLength = React.Children.count(children);
   let count = 1;
   const validChildren = React.Children?.map(children, (child) => {
@@ -39,7 +44,6 @@ const Accordion = ({ children, width, height }) => {
       return child;
     }
   });
-
   return (
     <div className={`w-full h-fit border-2 rounded-lg px-2 py-4 shadow-sm mt-8`} style={{ borderColor: 'hsla(240,4%, 15%, 1)', width, height }}>
       <div className='max-w-full py-4 px-4 w-full h-full overflow-scroll flex flex-col'>
@@ -56,7 +60,7 @@ Accordion.propTypes = {
 };
 
 Accordion.defaultProps = {
-  width: '100%',
+  width: '40rem',
   height: 'auto',
 };
 
