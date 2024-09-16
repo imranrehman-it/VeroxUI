@@ -1,16 +1,17 @@
 import React from 'react'
 import PropType from 'prop-types'
 
-const CardContent = ({children}) => {
+const CardContent = ({children, style}) => {
   return (
-    <div className="w-full overflow-scroll items-center">
+    <div className="w-full overflow-scroll items-center" style={style}>
       {children}
     </div>
   )
 }
 
 CardContent.propTypes = {
-  children: PropType.node
+  children: PropType.node,
+  style: PropType.object
 }
 
 const exampleDiv =
@@ -18,7 +19,8 @@ const exampleDiv =
   <p>@verox-ui sample card component</p>
 </div>
 CardContent.defaultProps = {
-  children: exampleDiv
+  children: exampleDiv,
+  style: {},
 }
 
 CardContent.displayName = 'CardContent'

@@ -1,7 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const DividedCardContainer = ({children}) => {
+const validCSSValue = (props, propName, componentName) => {
+  const value = props[propName];
+  const validUnits = [
+    'px', 'rem', 'em', 'vw', 'vh', '%', 'auto',
+    'fit-content', 'min-content', 'max-content',
+    'inherit', 'initial', 'unset'
+  ];
+
+  if (typeof value === 'string') {
+    const isValidUnit = validUnits.some(unit => value.endsWith(unit));
+    const isAutoOrOtherValue = validUnits.includes(value);
+    if (!isValidUnit && !isAutoOrOtherValue) {
+      return new Error(`Invalid prop \`${propName}\` supplied to \`${componentName}\ with value: ${value}. Value should be a valid CSS unit (e.g., '100px', '50%', 'auto').`);
+    }
+  } else {
+    return new Error(`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Value should be a string.`);
+  }
+};
+
+const DividedCardContainer = ({children, width, height}) => {
 
   const cardHeadingElement = React.Children.toArray(children).find(
     (child) => child.type.displayName === 'CardHeading'
@@ -16,7 +35,8 @@ const DividedCardContainer = ({children}) => {
   )
 
   return (
-  <div className="flex flex-col w-[400px] h-[220px] py-4  bg-default text-white rounded-2xl shadow-lg">
+  <div className="flex flex-col py-4  bg-default text-white rounded-2xl shadow-lg"
+      style={{width: width, height: height}}>
     {/* Profile section */}
     <div className="flex items-center border-b border-gray-600 px-4 pb-4 ">
       {/* Profile Image */}
@@ -37,7 +57,14 @@ const DividedCardContainer = ({children}) => {
 }
 
 DividedCardContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  width: validCSSValue,
+  height: validCSSValue,
+}
+
+DividedCardContainer.defaultProps = {
+  width: '400px',
+  height: '220px',
 }
 
 
