@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const FormInput = ({ label, placeholder, type, required, onChange, value, id, variant }) => {
+const FormInput = ({
+  label,
+   placeholder,
+   type,
+   required,
+   onChange,
+   value,
+   id,
+   variant }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState(value || '');
 
 
-
-
-
+  useEffect(()=>{
+    console.log('isFocused', isFocused, 'inputValue', inputValue)
+  }, [isFocused, inputValue])
 
   const handleFocus = () => setIsFocused(true);
-  const handleBlur = () => setIsFocused(inputValue !== '');
+  const handleBlur = () => setIsFocused(false);
   const handleChange = (e) => {
     const newValue = e.target.value;
     setInputValue(newValue);

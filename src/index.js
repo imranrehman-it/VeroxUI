@@ -18,4 +18,5 @@ export { default as CardConatiner } from './components/Cards/CardConatiner'
 export { default as DividedCardContainer } from './components/Cards/DividedCardContainer'
 export {default as TextGradient} from './components/Text/TextGradient'
 export {default as FormInput} from './components/Input/FormInput'
+export {default as Form} from './components/Input/Form'
 
