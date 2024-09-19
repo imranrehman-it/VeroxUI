@@ -31,8 +31,6 @@ const FormInput = ({ label, placeholder, type, required, onChange, value, id, va
   return (
     <div className={`flex justify-center items-start relative w-full my-4 pb-[0.375rem] pt-[0.5rem] px-3 rounded-lg antialiased ${inputStyle}`}
       style={{ borderColor: isFocused ? 'white' : 'hsl(240, 4%, 15%)', color: isFocused ? 'white' : 'text-gray-400' }}>
-
-      {/* Label */}
       <label
         htmlFor={id}
         className={`absolute left-3 top-3 bg-transparent text-md transition-all duration-200 ease-in-out cursor-pointer ${labelStyle}`}
@@ -40,12 +38,11 @@ const FormInput = ({ label, placeholder, type, required, onChange, value, id, va
         {label}
       </label>
 
-      {/* Input */}
       <input
         autoComplete="new-password"
         id={id}
         type={type}
-        value={inputValue}  // Use the state-managed value
+        value={inputValue}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onChange={handleChange}
@@ -57,17 +54,6 @@ const FormInput = ({ label, placeholder, type, required, onChange, value, id, va
           borderColor: isFocused ? 'white' : 'hsl(240, 4%, 15%)',
         }}
       />
-
-      {/* Autofill style override */}
-      <style>
-        {`
-          :-webkit-autofill {
-            -webkit-text-fill-color: white;
-            -webkit-box-shadow: 0 0 0px 1000px hsl(240, 4%, 15%) inset;
-            transition: background-color 5000s ease-in-out 0s;
-          }
-        `}
-      </style>
     </div>
   );
 };
