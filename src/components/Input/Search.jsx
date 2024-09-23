@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Search = ({ placeholder, variant, onEnter }) => {
+const Search = ({ placeholder, variant, onEnter, iconPosition, onChange }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+
+  useEffect(() => {
+    onChange && onChange(searchValue);
+  }, [searchValue]);
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
@@ -32,7 +36,7 @@ const Search = ({ placeholder, variant, onEnter }) => {
       }}
     >
       <svg
-        className={`fill-slate-200 w-5 h-5 transition-colors duration-300 ${isFocused ? 'text-white' : 'text-gray-400'}`}
+        className={`fill-slate-200 w-5 h-5 transition-colors duration-300 ${isFocused ? 'text-white' : 'text-gray-400'} ${iconPosition === 'left' ? 'order-first' : 'order-last'}`}
         viewBox="64 64 896 896"
         focusable="false"
         xmlns="http://www.w3.org/2000/svg"
@@ -61,12 +65,16 @@ Search.propTypes = {
   placeholder: PropTypes.string,
   variant: PropTypes.oneOf(['default', 'outlined', 'ghost']), // Added variant prop validation
   onEnter: PropTypes.func,
+  iconPosition: PropTypes.oneOf(['left', 'right']),
+  onChange: PropTypes.func,
 };
 
 Search.defaultProps = {
   placeholder: 'Search',
   variant: 'default', // Default variant if none is passed
   onEnter: undefined,
+  iconPosition: 'left',
+  onChange: ()=>{console.log('Search value changed pass a function to argument onChange prop to handle the change or remove the prop')},
 };
 
 export default Search;
