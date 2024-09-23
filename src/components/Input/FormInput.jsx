@@ -33,7 +33,7 @@ const FormInput = ({
   const labelStyle = `${isFocused || inputValue
     ? 'transform -translate-y-[0.6rem] text-[0.75rem] font-semibold'
     : 'text-gray-400'} ${variant === 'ghost' && isFocused
-    ? '-translate-x-2'
+    ? ''
     : '-translate-x-[0px]'}`;
 
   return (
@@ -45,7 +45,7 @@ const FormInput = ({
       >
         {label}
       </label>
-
+      <div className='flex flex-row w-full'>
       <input
         autoComplete="new-password"
         id={id}
@@ -62,6 +62,9 @@ const FormInput = ({
           borderColor: isFocused ? 'white' : 'hsl(240, 4%, 15%)',
         }}
       />
+
+      </div>
+
     </div>
   );
 };
