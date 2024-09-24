@@ -20,4 +20,5 @@ export {default as TextGradient} from './components/Text/TextGradient'
 export {default as FormInput} from './components/Input/FormInput'
 export {default as Form} from './components/Input/Form'
 export {default as SearchBar} from './components/Input/Search'
+export {default as Navbar} from './components/Navbar/Navbar'
 
