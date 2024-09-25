@@ -89,7 +89,7 @@ const Button = ({
                         variant === 'outlined' ? ` border-2 ${textColorClass} ${borderColor} ${borderTypeClass}`:
                         variant === 'flat' ? `${textColorClass} ${colorClass} bg-opacity-25`:
                         variant === 'light' ? `${textColorClass} ${colorClass} bg-opacity-0 hover:bg-opacity-25 transition-all duration-150 ease-in-out`:
-                        `${colorClass} ${textColorClass}`
+                        `${colorClass} ${textColorClass} ${borderColor} border-2`;
 
   const disabledClass = disabled ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-90';
 

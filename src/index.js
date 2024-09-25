@@ -1,12 +1,7 @@
 import React from 'react'
 import styles from './styles.module.css'
 import './styles/tailwind.css'
-import TextGradient from './components/Text/TextGradient'
 
-
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
 
 export { default as Button } from './components/Button/Button'
 export { default as Accordion } from './components/Accordion/Accordion'
@@ -21,4 +16,10 @@ export {default as FormInput} from './components/Input/FormInput'
 export {default as Form} from './components/Input/Form'
 export {default as SearchBar} from './components/Input/Search'
 export {default as Navbar} from './components/Navbar/Navbar'
+export {default as NavTabs} from './components/Navbar/NavTabs/NavTabs'
+export {default as TabItem} from './components/Navbar/NavTabs/TabItem'
+export {default as NavAuth} from './components/Navbar/NavAuth'
+export {default as NavLogo} from './components/Navbar/NavLogo'
+export {default as NavUserDisplay} from './components/Navbar/NavUserDisplay'
+export { DiscordIcon, GithubIcon, GoogleIcon, NpmIcon, TwitterIcon, AppleIcon } from './components/Icons/Icons';
 
